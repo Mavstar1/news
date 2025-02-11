@@ -7,17 +7,22 @@ app.use(express.json());
 // CORS Middleware
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'POST');
+  res.header('Access-Control-Allow-Methods', 'GET, POST');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
 
-// POST request to forward to worker.js
+// Handle GET requests for debugging or fetching data
+app.get('/api/server', async (req, res) => {
+  res.json({ message: 'GET request to /api/server is working!' });
+});
+
+// Handle POST requests (forward to worker)
 app.post('/api/server', async (req, res) => {
   try {
-    // Forward the request to /api/worker (serverless function)
+    // Forward the request to the worker service
     const response = await axios.post(
-      'https://your-vercel-project.vercel.app/public/worker', // Correct API path
+      'https://news-pearl-one.vercel.app/worker', // Ensure this is correct
       req.body,
       {
         headers: {
@@ -39,5 +44,5 @@ app.get('/', (req, res) => {
   res.send('Welcome to My Server!');
 });
 
-// Instead of app.listen(), export the Express app as a function for Vercel
+// Export for Vercel
 module.exports = app;
