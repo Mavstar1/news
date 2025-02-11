@@ -17,7 +17,7 @@ app.post('/api/server', async (req, res) => {
   try {
     // Forward the request to /api/worker (serverless function)
     const response = await axios.post(
-      'https://your-vercel-project.vercel.app/api/worker', // Correct API path
+      'https://your-vercel-project.vercel.app/public/worker', // Correct API path
       req.body,
       {
         headers: {
