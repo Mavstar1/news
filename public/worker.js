@@ -6,7 +6,7 @@ self.addEventListener('fetch', function (event) {
   const key = url.searchParams.get('key');
   const developerKey = event.request.headers.get('Developer-Key');
 
-  if (url.pathname.includes('/worker') && event.request.method === 'POST') {
+  if (event.request.method === 'POST') {
     event.respondWith(
       (async () => {
         try { 
