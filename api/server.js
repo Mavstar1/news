@@ -22,7 +22,7 @@ app.post('/api/server', async (req, res) => {
   try {
     // Forward the request to the worker service
     const response = await axios.post(
-      'https://news-pearl-one.vercel.app/worker', // Ensure this is correct
+      'https://news-pearl-one.vercel.app/worker.js', // Ensure this is correct
       req.body,
       {
         headers: {
