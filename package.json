@@ -1,10 +1,9 @@
-  GNU nano 8.3       package.json
 {
   "name": "my-express-vercel",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && >
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
